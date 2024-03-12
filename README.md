@@ -37,3 +37,16 @@
 
 * `org.scalatest.FlatSpec`が廃止されているためコンパイルエラーになる
   * `org.scalatest.flatspec.AnyFlatSpec`を使用することで解決
+
+* 0x34333231でexitするよう実装されているがこれだと、2ステップ読んで終了となった
+  * 書籍では3ステップ出力されるって書かれているけど
+  * とりま、41~44を追加し、0x44434241でexitするようにしておいた。
+
+## 疑問点
+
+### Ch.7
+
+* `rs1_addr`と`rs2_addr`の取り出しで警告が出る。
+
+> [W002] Dynamic index with width 6 is too large for extractee of width 1
+

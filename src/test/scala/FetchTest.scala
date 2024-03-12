@@ -1,4 +1,4 @@
-package fetch
+package decode
 
 import chisel3._
 
