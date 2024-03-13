@@ -59,7 +59,7 @@ class Core extends Module {
 
     //
 
-    io.exit := (inst === 0x44434241.U(WORD_LEN.W))
+    io.exit := (inst === 0x22222222.U(WORD_LEN.W))
 
     printf(p"pc_reg : 0x${Hexadecimal(pc_reg)}\n")
     printf(p"inst : 0x${Hexadecimal(inst)}\n")
