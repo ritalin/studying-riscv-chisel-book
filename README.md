@@ -1,5 +1,7 @@
 # RISC-VとChiselで学ぶはじめてのCPU自作の写経
 
+https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
+
 ## 環境
 
 * MacOS: Ventura
