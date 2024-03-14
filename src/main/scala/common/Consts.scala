@@ -20,6 +20,14 @@ object Consts {
     val OP2_IMS = 3.U(OP2_LEN.W) // S形式の即値
 
     val MEM_LEN = 2
-    val MEM_X = 0.U(OP2_LEN.W) // メモリへのストアなし
-    val MEM_S = 1.U(OP2_LEN.W) // スカラ命令用
+    val MEM_X = 0.U(MEM_LEN.W) // メモリへのストアなし
+    val MEM_S = 1.U(MEM_LEN.W) // スカラ命令用
+
+    val REN_LEN = 2
+    val REN_X = 0.U(REN_LEN.W)
+    val REN_S = 1.U(REN_LEN.W) // スカラ命令用
+
+    val WB_SEL_LEN = 3
+    val WB_X = 0.U(WB_SEL_LEN.W)
+    val WB_MEM = 1.U(WB_SEL_LEN.W)
 }

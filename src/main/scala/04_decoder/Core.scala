@@ -60,14 +60,14 @@ class Core extends Module {
     // ストアの可否もここで判定してしまう
     val csignals = ListLookup(inst, 
         (
-            List(ALU_X, OP1_RS1, OP2_RS2, MEM_X) // default
+            List(ALU_X, OP1_RS1, OP2_RS2, MEM_X, REN_X, WB_X) // default
         ), 
         Array( // mappings
-            LW -> List(ALU_ADD, OP1_RS1, OP2_IMI, MEM_X), // rs1_data + imm_i_sext
-            SW -> List(ALU_ADD, OP1_RS1, OP2_IMS, MEM_S)  // rs1_data + imm_s_sext
+            LW -> List(ALU_ADD, OP1_RS1, OP2_IMI, MEM_X, REN_S, WB_MEM), // rs1_data + imm_i_sext
+            SW -> List(ALU_ADD, OP1_RS1, OP2_IMS, MEM_S, REN_X, WB_X)  // rs1_data + imm_s_sext
         )
     )
-    val exe_fun :: op1_sel :: op2_sel :: mem_wen :: Nil = csignals
+    val exe_fun :: op1_sel :: op2_sel :: mem_wen :: mem_ren :: wb_sel :: Nil = csignals
 
     val op1_data = MuxCase(0.U(WORD_LEN.W), Seq(
         (op1_sel === OP1_RS1) -> rs1_data
@@ -86,8 +86,10 @@ class Core extends Module {
     io.dmem.wen := mem_wen
     io.dmem.wdata := rs2_data // rs2レジスタの値（アドレス）に書き込む
 
-    val wb_data = io.dmem.rdata
-    when (inst === LW) {
+    val wb_data = MuxCase(alu_out, Seq(
+        (wb_sel === WB_MEM) -> io.dmem.rdata
+    ))
+    when (mem_ren === REN_S) {
         regfile(wb_addr) := wb_data
     }
 
