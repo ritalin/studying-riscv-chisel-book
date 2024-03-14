@@ -57,16 +57,17 @@ class Core extends Module {
     val imm_s_sext = Cat(Fill(20, imm_s(11)), imm_s) // 31bit目の値を20回繰り返し、ついでimm_sの値を連結する（合計32bit)
     
     // 命令のルックアップテーブルを構築する
+    // ストアの可否もここで判定してしまう
     val csignals = ListLookup(inst, 
         (
-            List(ALU_X, OP1_RS1, OP2_RS2) // default
+            List(ALU_X, OP1_RS1, OP2_RS2, MEM_X) // default
         ), 
         Array( // mappings
-            LW -> List(ALU_ADD, OP1_RS1, OP2_IMI), // rs1_data + imm_i_sext
-            SW -> List(ALU_ADD, OP1_RS1, OP2_IMS)  // rs1_data + imm_s_sext
+            LW -> List(ALU_ADD, OP1_RS1, OP2_IMI, MEM_X), // rs1_data + imm_i_sext
+            SW -> List(ALU_ADD, OP1_RS1, OP2_IMS, MEM_S)  // rs1_data + imm_s_sext
         )
     )
-    val exe_fun :: op1_sel :: op2_sel :: Nil = csignals
+    val exe_fun :: op1_sel :: op2_sel :: mem_wen :: Nil = csignals
 
     val op1_data = MuxCase(0.U(WORD_LEN.W), Seq(
         (op1_sel === OP1_RS1) -> rs1_data
@@ -82,7 +83,7 @@ class Core extends Module {
     ))
 
     io.dmem.addr := alu_out
-    io.dmem.wen := (inst === SW) // SW命令の時に有効にする
+    io.dmem.wen := mem_wen
     io.dmem.wdata := rs2_data // rs2レジスタの値（アドレス）に書き込む
 
     val wb_data = io.dmem.rdata
