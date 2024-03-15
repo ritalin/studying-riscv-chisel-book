@@ -11,7 +11,13 @@ object Consts {
     val ALU_X = 0.U(EXE_FUN_LEN.W)
     val ALU_ADD = 1.U(EXE_FUN_LEN.W) // 加算命令
     val ALU_JALR = 2.U(EXE_FUN_LEN.W)
-
+    val ALU_BR_BEQ = 3.U(EXE_FUN_LEN.W)
+    val ALU_BR_BNE = 4.U(EXE_FUN_LEN.W)
+    val ALU_BR_BLT = 5.U(EXE_FUN_LEN.W)
+    val ALU_BR_BGE = 6.U(EXE_FUN_LEN.W)
+    val ALU_BR_BLTU = 7.U(EXE_FUN_LEN.W)
+    val ALU_BR_BGEU = 8.U(EXE_FUN_LEN.W)
+    
     val OP1_LEN = 2
     val OP1_X = 0.U(OP1_LEN.W)
     val OP1_RS1 = 1.U(OP1_LEN.W) // rs1レジスタ番号

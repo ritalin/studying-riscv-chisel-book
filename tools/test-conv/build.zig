@@ -3,18 +3,24 @@ const std = @import("std");
 pub fn build(b: *std.Build) void {
     const bin_step = b.step("hex", "Convert to raw binary");
 
-    const test_files = [_][]const u8{
-        "./riscv-tests/isa/rv32ui/rv32ui-p-add",
-        "./riscv-tests/isa/rv32ui/rv32ui-p-jalr",
-    };
+    const test_dir_path = "riscv-tests/isa/rv32ui";
+    var test_dir = std.fs.cwd().openDir(test_dir_path, .{}) catch @panic("Test folder not found");
+    defer test_dir.close();
 
-    for (test_files) |elf_file_path| {
-        const basename = std.fs.path.stem(elf_file_path);
+    var test_files_iter = test_dir.walk(b.allocator) catch @panic("Can not open Test folder");
+    defer test_files_iter.deinit();
+
+    while (test_files_iter.next() catch @panic("Can not iterate Test folder")) |e| {
+        if (std.mem.endsWith(u8, e.basename, ".dump")) { continue; }
+
+        const elf_file_path = b.pathJoin(&[_][]const u8{ test_dir_path, e.basename });
+
+        const basename = e.basename;
         const bin_name = std.fmt.allocPrint(b.allocator, "{s}.bin", .{basename}) catch @panic("OOM");
         const hex_name = std.fmt.allocPrint(b.allocator, "{s}.hex", .{basename}) catch @panic("OOM");
 
         const bin = b.addObjCopy(
-            .{ .cwd_relative = elf_file_path },
+            .{ .cwd_relative = b.allocator.dupe(u8, elf_file_path) catch @panic("OOM") },
             .{
                 .basename = bin_name,
                 .format = .bin

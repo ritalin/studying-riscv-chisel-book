@@ -70,7 +70,7 @@ https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
 
 ### Ch,17
 
-> * `riscv-tests`は、[zig言語](https://ziglang.org/)を介して`hex`ファイルに変換。
+> * `riscv-tests`は、Nightly版の[zig言語](https://ziglang.org/)を介して`hex`ファイルに変換。
 >   * テストケースは、[cgshep/riscv-tests-prebuilt-binaries](https://github.com/cgshep/riscv-tests-prebuilt-binaries)を使用した。
 > * `od`コマンドで`HEX`化
 >   * MacOS版の`od`は、`w`パラメータが存在しないため、`sed`で加工した。
@@ -90,6 +90,9 @@ https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
 * JALRの実行でLSBに０を付与する際、&の結果はBoolになるため、UIntへの変換が必要
   * https://www.rm48.net/post/risc-vとchiselで学ぶ-はじめての自作cpu-メモ
 
+### Ch.15
+
+* 比較命令のルックアップが、ほとんど同じなため、mapで一括生成して連結した。
 
 ## 疑問点
 
