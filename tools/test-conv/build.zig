@@ -2,11 +2,10 @@ const std = @import("std");
 
 pub fn build(b: *std.Build) void {
     const bin_step = b.step("hex", "Convert to raw binary");
-    
+
     const test_files = [_][]const u8{
-        // "./riscv-tests/isa/rv32ui/rv32ui-p-add",
+        "./riscv-tests/isa/rv32ui/rv32ui-p-add",
         "./riscv-tests/isa/rv32ui/rv32ui-p-jalr",
-        "./riscv-tests/isa/rv32ui/rv32ui-p-fence_i",
     };
 
     for (test_files) |elf_file_path| {
