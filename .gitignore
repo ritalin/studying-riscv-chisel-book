@@ -1,9 +1,14 @@
 *.class
 *.log
 .bsp
+.bloop
 project
 target
 test_run_dir
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# zig project
+zig-out
+zig-cache

@@ -1,0 +1,3 @@
+[submodule "tools/test-conv/riscv-tests"]
+	path = tools/test-conv/riscv-tests
+	url = https://github.com/cgshep/riscv-tests-prebuilt-binaries
