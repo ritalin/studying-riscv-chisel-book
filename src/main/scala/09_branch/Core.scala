@@ -5,7 +5,7 @@ import chisel3.util._
 import common.Consts._
 import common.Instructions._
 
-class Core(pc_reg_exit: UInt, pc_reg_start: UInt = 0.U(WORD_LEN.W), pc_reg_offset: UInt = 0.U(WORD_LEN.W)) extends Module {
+class Core(pc_reg_exit: UInt, pc_reg_start: UInt = 0.U(WORD_LEN.W)) extends Module {
     val io = IO(new Bundle {
         val imem = Flipped(new ImemPortIo())
         val dmem = Flipped(new DmemPortIo())
