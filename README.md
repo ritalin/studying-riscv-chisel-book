@@ -74,6 +74,8 @@ https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
 >   * テストケースは、[cgshep/riscv-tests-prebuilt-binaries](https://github.com/cgshep/riscv-tests-prebuilt-binaries)を使用した。
 > * `od`コマンドで`HEX`化
 >   * MacOS版の`od`は、`w`パラメータが存在しないため、`sed`で加工した。
+>
+> `hex`ファイルの作成は、`tools/test-conv`フォルダ下で`zig build hex`とタイプすることで作成できる。
 
 `jalr`命令は`auipc`で即値をレジスタに入れ、`addi`で上位アドレスを計算している。
 そのため、即値命令を先行して実装する。
