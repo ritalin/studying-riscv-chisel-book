@@ -68,6 +68,25 @@ https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
 * 警備ではあるが、`Consts.scala`の`RSXXXXX`の定義値を変更している
   * パターンマッチの判定用のため、さしたる影響はない。
 
+### Ch,17
+
+`jalr`命令は`auipc`で即値をレジスタに入れ、`addi`で上位アドレスを計算している。
+そのため、即値命令を先行して実装する。
+
+<!--
+### Ch.16
+
+`_start`のエントリーポイントのコールを処理するためジャンプ命令を先行して実装する。
+
+* `riscv-tests`は、[zig言語](https://ziglang.org/)を介して`bin`ファイルに変換。
+  * テストケースは、[cgshep/riscv-tests-prebuilt-binaries](https://github.com/cgshep/riscv-tests-prebuilt-binaries)を使用した。
+* `od`コマンドで`HEX`化
+  * `MacOS版の`od`は、`w`パラメータが存在しないため、`sed`で加工した。
+
+* JALRの実行でLSBに０を付与する際、&の結果はBoolになるため、UIntへの変換が必要
+  * https://www.rm48.net/post/risc-vとchiselで学ぶ-はじめての自作cpu-メモ
+-->
+
 ## 疑問点
 
 ### Ch.6
