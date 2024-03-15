@@ -55,7 +55,7 @@ https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
 ### Ch.9
 
 * ch.8同様、終了アドレスを`0x22222222`に変更した。
-* 書籍では、hexファイルは12行目まで入力している。しかし2つめの命令がアドレス0x16を指すが存在しないため、一つ前の結果(0x22222222)となる
+* 書籍では、hexファイルは12行目まで入力している。しかし2つめの命令がアドレス0x16を指すが存在しないため、一つ前の結果(0x22222222)となる。
   * 追加で4行分、0で埋めた (0x16のデータ)
 
 ### Ch.12
@@ -65,27 +65,31 @@ https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
 `riscv-tests`を回す上で、`_start`のエントリーポイントをコールしているため、`Ch.16`のジャンプ命令から・・・
 といきたかったが、デコードの共通化が行われた後なので、先に`Ch.12`を消化する。
 
-* 警備ではあるが、`Consts.scala`の`RSXXXXX`の定義値を変更している
+* 警備ではあるが、`Consts.scala`の`RSXXXXX`の定義値を変更している。
   * パターンマッチの判定用のため、さしたる影響はない。
 
 ### Ch,17
 
+> * `riscv-tests`は、[zig言語](https://ziglang.org/)を介して`hex`ファイルに変換。
+>   * テストケースは、[cgshep/riscv-tests-prebuilt-binaries](https://github.com/cgshep/riscv-tests-prebuilt-binaries)を使用した。
+> * `od`コマンドで`HEX`化
+>   * MacOS版の`od`は、`w`パラメータが存在しないため、`sed`で加工した。
+
 `jalr`命令は`auipc`で即値をレジスタに入れ、`addi`で上位アドレスを計算している。
 そのため、即値命令を先行して実装する。
 
-<!--
+### Ch.10
+
+`addi`は`Ch,17`の試験結果を踏まえるようにする。
+
 ### Ch.16
 
 `_start`のエントリーポイントのコールを処理するためジャンプ命令を先行して実装する。
-
-* `riscv-tests`は、[zig言語](https://ziglang.org/)を介して`bin`ファイルに変換。
-  * テストケースは、[cgshep/riscv-tests-prebuilt-binaries](https://github.com/cgshep/riscv-tests-prebuilt-binaries)を使用した。
-* `od`コマンドで`HEX`化
-  * `MacOS版の`od`は、`w`パラメータが存在しないため、`sed`で加工した。
+`jalr`命令は、`Ch.17`, `Ch.10`の結果を踏まえそうな箇所を選択した。
 
 * JALRの実行でLSBに０を付与する際、&の結果はBoolになるため、UIntへの変換が必要
   * https://www.rm48.net/post/risc-vとchiselで学ぶ-はじめての自作cpu-メモ
--->
+
 
 ## 疑問点
 
