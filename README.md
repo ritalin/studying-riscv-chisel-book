@@ -106,6 +106,8 @@ https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
 
 ### Ch.14
 
+* `Ch.15`同様ルックアップの共通化を行なっている。
+
 ### Ch.18
 
 ### Ch.19
