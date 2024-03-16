@@ -96,6 +96,10 @@ https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
 
 * 比較命令のルックアップが、ほとんど同じなため、mapで一括生成して連結した。
 
+### Ch.11
+
+* `Ch.15`同様ルックアップの共通化を行なっている。
+
 ## 疑問点
 
 ### Ch.6

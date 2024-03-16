@@ -17,6 +17,9 @@ object Consts {
     val ALU_BR_BGE = 6.U(EXE_FUN_LEN.W)
     val ALU_BR_BLTU = 7.U(EXE_FUN_LEN.W)
     val ALU_BR_BGEU = 8.U(EXE_FUN_LEN.W)
+    val ALU_AND = 9.U(EXE_FUN_LEN.W)
+    val ALU_OR = 10.U(EXE_FUN_LEN.W)
+    val ALU_XOR = 11.U(EXE_FUN_LEN.W)
     
     val OP1_LEN = 2
     val OP1_X = 0.U(OP1_LEN.W)
