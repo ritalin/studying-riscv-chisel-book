@@ -20,6 +20,9 @@ object Consts {
     val ALU_AND = 9.U(EXE_FUN_LEN.W)
     val ALU_OR = 10.U(EXE_FUN_LEN.W)
     val ALU_XOR = 11.U(EXE_FUN_LEN.W)
+    val ALU_SLL = 12.U(EXE_FUN_LEN.W)
+    val ALU_SRL = 13.U(EXE_FUN_LEN.W)
+    val ALU_SRA = 14.U(EXE_FUN_LEN.W)
     
     val OP1_LEN = 2
     val OP1_X = 0.U(OP1_LEN.W)
