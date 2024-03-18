@@ -25,13 +25,16 @@ object Consts {
     val ALU_SRA = 14.U(EXE_FUN_LEN.W)
     val ALU_SLT = 15.U(EXE_FUN_LEN.W)
     val ALU_SLTU = 16.U(EXE_FUN_LEN.W)
+    val ALU_COPY1 = 17.U(EXE_FUN_LEN.W)
     
     val OP1_LEN = 2
     val OP1_X = 0.U(OP1_LEN.W)
     val OP1_RS1 = 1.U(OP1_LEN.W) // rs1レジスタ番号
     val OP1_PC = 2.U(OP1_LEN.W) // pcレジスタ番号
+    val OP1_IMZ = 3.U(OP1_LEN.W)
 
     val OP2_LEN = 3
+    val OP2_X = 0.U(OP2_LEN.W)
     val OP2_RS2 = 1.U(OP2_LEN.W) // rs2レジスタ番号
     val OP2_IMI = 2.U(OP2_LEN.W) // I形式の即値
     val OP2_IMS = 3.U(OP2_LEN.W) // S形式の即値
@@ -51,4 +54,11 @@ object Consts {
     val WB_MEM = 1.U(WB_SEL_LEN.W)
     val WB_ALU = 2.U(WB_SEL_LEN.W)
     val WB_PC = 3.U(WB_SEL_LEN.W)
+    val WB_CSR = 4.U(WB_SEL_LEN.W)
+
+    val CSR_LEN = 3
+    val CSR_X = 0.U(CSR_LEN.W)
+    val CSR_W = 1.U(CSR_LEN.W)
+    val CSR_S = 2.U(CSR_LEN.W)
+    val CSR_C = 3.U(CSR_LEN.W)
 }

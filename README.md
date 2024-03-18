@@ -1,6 +1,10 @@
 # RISC-VとChiselで学ぶはじめてのCPU自作の写経
 
-https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
+* 書籍案内
+  * https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
+
+* 書籍公式レポジトリ
+  * https://github.com/chadyuu/riscv-chisel-book
 
 ## 環境
 
@@ -109,6 +113,10 @@ https://direct.gihyo.jp/view/item/000000001593?category_page_id=programming
 * `Ch.15`同様ルックアップの共通化を行なっている。
 
 ### Ch.18
+
+* I命令用の`imm_z_sext`の読み出しが本文に記載されていなかった（公式レポジトリんおコードには記載あり）
+* `cgshep/riscv-tests-prebuilt-binaries`には`csr`用のテストが含まれていなかったため、書籍公式レポジトリより持ってきた。
+  * `chadyuu/riscv-chisel-book/target/share/riscv-tests/isa/rv32mi-p-csr`
 
 ### Ch.19
 
