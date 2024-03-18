@@ -6,6 +6,7 @@ object Consts {
     val WORD_LEN = 32
     val START_ADDR = 0.U(WORD_LEN.W)
     // val START_ADDR_OFFSET = 80000000.U(WORD_LEN.W)
+    val CSR_ADDR_LEN = 12
 
     val EXE_FUN_LEN = 5
     val ALU_X = 0.U(EXE_FUN_LEN.W)
@@ -26,6 +27,7 @@ object Consts {
     val ALU_SLT = 15.U(EXE_FUN_LEN.W)
     val ALU_SLTU = 16.U(EXE_FUN_LEN.W)
     val ALU_COPY1 = 17.U(EXE_FUN_LEN.W)
+    val ALU_ECALL = 18.U(EXE_FUN_LEN.W)
     
     val OP1_LEN = 2
     val OP1_X = 0.U(OP1_LEN.W)
@@ -61,4 +63,10 @@ object Consts {
     val CSR_W = 1.U(CSR_LEN.W)
     val CSR_S = 2.U(CSR_LEN.W)
     val CSR_C = 3.U(CSR_LEN.W)
+    val CSR_E = 4.U(CSR_LEN.W)
+    
+    val CSR_MTVEC = 0x305.U(CSR_ADDR_LEN.W) // CSRのmtvecにはtrap vectorのアドレスが入っている
+    val CSR_MCAUSE = 0x342.U(CSR_ADDR_LEN.W)
+
+    val PRIV_MODE_M = 0x11.U(WORD_LEN.W) // マシンモード
 }
