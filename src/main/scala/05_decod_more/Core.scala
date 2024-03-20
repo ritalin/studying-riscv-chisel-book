@@ -108,5 +108,8 @@ class Core extends Module {
     printf(p"dmem.addr : ${io.dmem.addr}\n")
     printf(p"dmem.wen : ${io.dmem.wen}\n")
     printf(p"dmem.wdata : 0x${Hexadecimal(io.dmem.wdata)}\n")    
+    printf(p"exe_fun : ${exe_fun}\n")
+    printf(p"op2_sel : ${op2_sel}\n")
+    printf(p"mem_ren : ${mem_ren}\n")
     printf("----------\n")
 }
