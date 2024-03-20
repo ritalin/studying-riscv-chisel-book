@@ -108,6 +108,7 @@ class Core(pc_reg_exit: UInt, pc_reg_start: UInt = 0.U(WORD_LEN.W)) extends Modu
             SW -> List(ALU_ADD, OP1_RS1, OP2_IMS, MEN_S, REN_X, WB_X),  // rs1_data + imm_s_sext
             ADD -> List(ALU_ADD, OP1_RS1, OP2_RS2, MEN_X, REN_S, WB_ALU),
             ADDI -> List(ALU_ADD, OP1_RS1, OP2_IMI, MEN_X, REN_S, WB_ALU),
+            SUB -> List(ALU_SUB, OP1_RS1, OP2_RS2, MEN_X, REN_S, WB_ALU),
             LUI -> List(ALU_ADD, OP1_X, OP2_IMU, MEN_X, REN_S, WB_ALU),
             AUIPC -> List(ALU_ADD, OP1_PC, OP2_IMU, MEN_X, REN_S, WB_ALU),            
             JAL -> List(ALU_ADD, OP1_PC, OP2_IMJ, MEN_X, REN_S, WB_PC), // ジャンプ先の早退アドレスが計算済みのため加算命令を流用できる
@@ -166,6 +167,7 @@ class Core(pc_reg_exit: UInt, pc_reg_start: UInt = 0.U(WORD_LEN.W)) extends Modu
 
     alu_out := MuxCase(0.U(WORD_LEN.W), Seq(
         (exe_fun === ALU_ADD) -> (op1_data + op2_data),
+        (exe_fun === ALU_SUB) -> (op1_data - op2_data),
         (exe_fun === ALU_JALR) -> ((op1_data + op2_data) & ~1.U(WORD_LEN.W)).asUInt, // &の結果はBoolになるため、UIntへの変換が必要
         (exe_fun === ALU_AND) -> (op1_data & op2_data),
         (exe_fun === ALU_OR) -> (op1_data | op2_data),

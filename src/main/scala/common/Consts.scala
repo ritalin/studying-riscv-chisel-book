@@ -11,23 +11,24 @@ object Consts {
     val EXE_FUN_LEN = 5
     val ALU_X = 0.U(EXE_FUN_LEN.W)
     val ALU_ADD = 1.U(EXE_FUN_LEN.W) // 加算命令
-    val ALU_JALR = 2.U(EXE_FUN_LEN.W)
-    val ALU_BR_BEQ = 3.U(EXE_FUN_LEN.W)
-    val ALU_BR_BNE = 4.U(EXE_FUN_LEN.W)
-    val ALU_BR_BLT = 5.U(EXE_FUN_LEN.W)
-    val ALU_BR_BGE = 6.U(EXE_FUN_LEN.W)
-    val ALU_BR_BLTU = 7.U(EXE_FUN_LEN.W)
-    val ALU_BR_BGEU = 8.U(EXE_FUN_LEN.W)
-    val ALU_AND = 9.U(EXE_FUN_LEN.W)
-    val ALU_OR = 10.U(EXE_FUN_LEN.W)
-    val ALU_XOR = 11.U(EXE_FUN_LEN.W)
-    val ALU_SLL = 12.U(EXE_FUN_LEN.W)
-    val ALU_SRL = 13.U(EXE_FUN_LEN.W)
-    val ALU_SRA = 14.U(EXE_FUN_LEN.W)
-    val ALU_SLT = 15.U(EXE_FUN_LEN.W)
-    val ALU_SLTU = 16.U(EXE_FUN_LEN.W)
-    val ALU_COPY1 = 17.U(EXE_FUN_LEN.W)
-    val ALU_ECALL = 18.U(EXE_FUN_LEN.W)
+    val ALU_SUB = 2.U(EXE_FUN_LEN.W)
+    val ALU_JALR = 3.U(EXE_FUN_LEN.W)
+    val ALU_BR_BEQ = 4.U(EXE_FUN_LEN.W)
+    val ALU_BR_BNE = 5.U(EXE_FUN_LEN.W)
+    val ALU_BR_BLT = 6.U(EXE_FUN_LEN.W)
+    val ALU_BR_BGE = 7.U(EXE_FUN_LEN.W)
+    val ALU_BR_BLTU = 8.U(EXE_FUN_LEN.W)
+    val ALU_BR_BGEU = 9.U(EXE_FUN_LEN.W)
+    val ALU_AND = 10.U(EXE_FUN_LEN.W)
+    val ALU_OR = 11.U(EXE_FUN_LEN.W)
+    val ALU_XOR = 12.U(EXE_FUN_LEN.W)
+    val ALU_SLL = 13.U(EXE_FUN_LEN.W)
+    val ALU_SRL = 14.U(EXE_FUN_LEN.W)
+    val ALU_SRA = 15.U(EXE_FUN_LEN.W)
+    val ALU_SLT = 16.U(EXE_FUN_LEN.W)
+    val ALU_SLTU = 17.U(EXE_FUN_LEN.W)
+    val ALU_COPY1 = 18.U(EXE_FUN_LEN.W)
+    val ALU_ECALL = 19.U(EXE_FUN_LEN.W)
     
     val OP1_LEN = 2
     val OP1_X = 0.U(OP1_LEN.W)
@@ -43,13 +44,17 @@ object Consts {
     val OP2_IMU = 4.U(OP2_LEN.W) // U形式の即値
     val OP2_IMJ = 5.U(OP2_LEN.W) // J形式の即値
 
-    val MEN_LEN = 2
+    val MEN_LEN = 3
     val MEN_X = 0.U(MEN_LEN.W) // メモリへのストアなし
-    val MEN_S = 1.U(MEN_LEN.W) // スカラ命令用
+    val MEN_SB = 1.U(MEN_LEN.W) // スカラ命令用 (1byte)
+    val MEN_SH = 2.U(MEN_LEN.W) // スカラ命令用 (2byte)
+    val MEN_SW = 3.U(MEN_LEN.W) // スカラ命令用 (4byte)
+    val MEN_S = MEN_SW
 
     val REN_LEN = 2
     val REN_X = 0.U(REN_LEN.W)
     val REN_S = 1.U(REN_LEN.W) // スカラ命令用
+    val REN_S_OFF = 2.U(REN_LEN.W) // オフセット計算をしてストアする
 
     val WB_SEL_LEN = 3
     val WB_X = 0.U(WB_SEL_LEN.W)
