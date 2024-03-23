@@ -29,6 +29,7 @@ object Consts {
     val ALU_SLTU = 17.U(EXE_FUN_LEN.W)
     val ALU_COPY1 = 18.U(EXE_FUN_LEN.W)
     val ALU_ECALL = 19.U(EXE_FUN_LEN.W)
+    val ALU_MRET = 20.U(EXE_FUN_LEN.W)
     
     val OP1_LEN = 2
     val OP1_X = 0.U(OP1_LEN.W)
@@ -72,6 +73,18 @@ object Consts {
     
     val CSR_MTVEC = 0x305.U(CSR_ADDR_LEN.W) // CSRのmtvecにはtrap vectorのアドレスが入っている
     val CSR_MCAUSE = 0x342.U(CSR_ADDR_LEN.W)
+    val CSR_MEPC = 0x341.U(CSR_ADDR_LEN.W)
 
     val PRIV_MODE_M = 0x11.U(WORD_LEN.W) // マシンモード
+    val ILLEGAL_INST = 0x2.U(WORD_LEN.W) // 不正命令
+
+    val BUBLE = 0x00000013.U(WORD_LEN.W) // NOP命令
+
+    val STAGE_TOTAL = 2
+    val STAGE_LEN = 3
+    val STAGE_IF = 0.U(STAGE_LEN.W)
+    val STAGE_ID = 1.U(STAGE_LEN.W)
+    val STAGE_EXE = 2.U(STAGE_LEN.W)
+    val STAGE_MEM = 3.U(STAGE_LEN.W)
+    val STAGE_WB = 4.U(STAGE_LEN.W)
 }

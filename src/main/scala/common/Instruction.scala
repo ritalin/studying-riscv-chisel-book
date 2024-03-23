@@ -131,4 +131,6 @@ object Instructions {
 
     // ECALL
     val ECALL = BitPat("b00000000000000000000000001110011") 
+    // MRET
+    val MRET = BitPat("b00110000001000000000000001110011")
 }
