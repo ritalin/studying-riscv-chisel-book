@@ -114,17 +114,33 @@
 
 ### Ch.18
 
-* I命令用の`imm_z_sext`の読み出しが本文に記載されていなかった（公式レポジトリんおコードには記載あり）
+* I命令用の`imm_z_sext`の読み出しが本文に記載されていなかった（公式レポジトリのコードには記載あり）
 * `cgshep/riscv-tests-prebuilt-binaries`には`csr`用のテストが含まれていなかったため、書籍公式レポジトリより持ってきた。
   * `chadyuu/riscv-chisel-book/target/share/riscv-tests/isa/rv32mi-p-csr`
 
 ### Ch.19
+
+* 書籍公式レポジトリよりテストケースを持ってきた
+  * `chadyuu/riscv-chisel-book/target/share/riscv-tests/isa/rv32mi-p-illegal`
+
+### Ch.20
+
+* ここまでの実装では、すべての`riscv-tests`をパスできない。
+  * `LH`, `LHU`, `LBU`, `LB`が未定義のため。
+    * ライトバック用に`OffsetMem`型を用意し、マスクと符号拡張を行うようにした。
+  * `SB`, `SH`の定義も追加した
+    * 出力のためのマスクは、`OffsetMem`型を使用した。
+
+  * `rv32mi-p-illegal`の通過を試みたが、`test_vectored_interrupts`で無限ループするため諦めた。
+    * `0x1cc`で決定される値と`0x1d0`で決定される値の`and`がどうしても`0`にならない。
+    * `RiscvTest_all.scala`からも除外している
 
 ## 疑問点
 
 ### Ch.6
 
 * `rs1_addr`と`rs2_addr`の取り出しで警告が出る。
+  * サイズを推論させたら警告出なくなった
 
 > [W002] Dynamic index with width 6 is too large for extractee of width 1
 
